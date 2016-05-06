@@ -1,10 +1,9 @@
 language: ruby
 rvm:
-  - 1.9.3
-  - 2.1.2
+  - 2.1.9
+  - 2.2.5
   - jruby-head
   - jruby-1.7
-  - rbx-2.2.7
 before_install:
   - gem update bundler
 script: "bundle exec rake"
@@ -14,5 +13,4 @@ notifications:
       secure: ykLsXlebzR9nnb+9ttpCySOg2hE4Ve699s2Owd7YahcZyVNxnG4q1P8Mps4jFlOgPNQ6JwkcB4A6QLavavtJlX7vXTDj1GD+zVAScjbtN/6ZV94S2eHA7hBUXHUwBmH0Cw5glrFoPEDBsQdOYbrOrJKwFNEhUTHdY0SRgEXv5Wo=
 matrix:
   allow_failures:
-    - rvm: jruby-head # cryptic gemspec problem in f444c68
-    - rvm: rbx-2.2.7
+    - rvm: jruby-head # bundle command is not resolved on travis in this time
