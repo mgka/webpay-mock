@@ -47,10 +47,9 @@ describe WebPay::Mock::WebMockWrapper do
     end
 
     describe 'retrieve responds not found' do
-      let(:params) { { amount: 1000, currency: 'jpy', card: 'tok_xxxxxxxxx', description: 'test charge' } }
-      let!(:response) { webpay_stub(:charges, :create, error: :not_found, params: params) }
-
-      specify { expect { webpay.charge.create(params).id }.to raise_error(WebPay::ErrorResponse::InvalidRequestError) }
+      let(:id) { 'ch_xxxxxxxxx' }
+      before { webpay_stub(:charges, :retrieve, error: :not_found, id: id) }
+      specify { expect { webpay.charge.retrieve(id).id }.to raise_error(WebPay::ErrorResponse::InvalidRequestError) }
     end
 
     describe 'refund' do
